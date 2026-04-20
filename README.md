@@ -28,8 +28,11 @@ Profile-Anomaly-Detection/
 ├── js/
 ├── index.html
 ├── dashboard.html
-└── .gitignore
+└── .gitignore 
 
+Preview
+![Main UI](./screenshot.png)
+![Dashboard](./screenshot2.png)
 ## How It Works
 
 The user provides basic profile metrics through the interface.  
