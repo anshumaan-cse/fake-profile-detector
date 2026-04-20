@@ -1,0 +1,72 @@
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Analysis Dashboard</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <div class="dashboard">
+
+    <!-- LEFT TITLE -->
+    <div class="header">
+      <h1>Analysis Dashboard</h1>
+      <p id="loading">Loading...</p>
+      <h2 id="status"></h2>
+      <p>Risk Score: <span id="risk">0%</span></p>
+    </div>
+
+    <!-- MAIN GRID -->
+    <div class="grid">
+
+      <!-- DONUT CHART -->
+      <div class="card large">
+        <canvas id="donutChart"></canvas>
+      </div>
+
+      <!-- RIGHT SIDE STATS -->
+      <div class="side">
+
+        <div class="card small">
+          <h3>Followers</h3>
+          <p id="followers">0</p>
+        </div>
+
+        <div class="card small">
+          <h3>Following</h3>
+          <p id="following">0</p>
+        </div>
+
+        <div class="card small">
+          <h3>Account Age</h3>
+          <p id="age">0</p>
+        </div>
+
+      </div>
+
+      <!-- ENGAGEMENT CHART -->
+      <div class="card">
+        <h3>Engagement Overview</h3>
+        <canvas id="barChart"></canvas>
+      </div>
+
+      <!-- REASONS -->
+      <div class="card">
+        <h3>Why Flagged?</h3>
+        <ul id="reasons"></ul>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- REQUIRED -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="css/js/dashboard.js"></script>
+
+</body>
+</html>
