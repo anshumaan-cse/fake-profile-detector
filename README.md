@@ -7,6 +7,7 @@
 ![FastAPI](https://img.shields.io/badge/FastAPI-0.136-teal)
 ![ML](https://img.shields.io/badge/ML-RandomForest%20%2B%20LogisticRegression-orange)
 ![UI](https://img.shields.io/badge/UI-Glassmorphism%20Dark%20SaaS-purple)
+https://8000-ihiy6c3ztp2dpwn8wj1xb-583b4d74.sandbox.novita.ai/dashboard
 
 ---
 
