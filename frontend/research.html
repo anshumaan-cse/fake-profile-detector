@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Research Module — FakeProfileDetector</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/static/css/main.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body class="dashboard-page">
+
+<div class="bg-grid"></div>
+<div class="bg-orb orb-1"></div>
+<div class="bg-orb orb-2"></div>
+
+<nav class="navbar">
+  <div class="nav-brand">
+    <span class="nav-logo">⬡</span>
+    <span class="nav-title">FakeProfileDetector</span>
+    <span class="nav-badge">AI v2.0</span>
+  </div>
+  <div class="nav-links">
+    <a href="/" class="nav-link">Analyze</a>
+    <a href="/dashboard" class="nav-link">Dashboard</a>
+    <a href="/research" class="nav-link active">Research</a>
+  </div>
+</nav>
+
+<div class="dash-container">
+
+  <!-- ──── Page Header ──── -->
+  <div class="research-header">
+    <div class="research-badge">📊 Evaluation Module</div>
+    <h1 class="research-title">Model Performance <span class="gradient-text">Research</span></h1>
+    <p class="research-subtitle">
+      Comparative evaluation of Rule-Based, Logistic Regression, Random Forest, and Hybrid models
+      trained on 2,100 synthetic social media profiles.
+    </p>
+  </div>
+
+  <!-- ──── Model Metric Cards ──── -->
+  <div id="modelMetricsGrid" class="model-metrics-grid">
+    <div class="loading-state">Loading evaluation data…</div>
+  </div>
+
+  <!-- ──── Charts Row 1 ──── -->
+  <div class="charts-grid">
+    <div class="chart-card glass-card">
+      <h3 class="card-title">ROC Curves</h3>
+      <p class="card-sub">Receiver Operating Characteristic – AUC comparison</p>
+      <div class="chart-wrap chart-wrap-tall">
+        <canvas id="rocChart"></canvas>
+      </div>
+    </div>
+
+    <div class="chart-card glass-card">
+      <h3 class="card-title">Feature Importances</h3>
+      <p class="card-sub">Random Forest feature contribution weights</p>
+      <div class="chart-wrap chart-wrap-tall">
+        <canvas id="importanceChart"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <!-- ──── Confusion Matrices ──── -->
+  <div class="confusion-grid">
+    <div class="confusion-card glass-card">
+      <h3 class="card-title">Confusion Matrix — Logistic Regression</h3>
+      <div id="cmLR" class="cm-wrap"></div>
+    </div>
+    <div class="confusion-card glass-card">
+      <h3 class="card-title">Confusion Matrix — Random Forest</h3>
+      <div id="cmRF" class="cm-wrap"></div>
+    </div>
+  </div>
+
+  <!-- ──── Bar Chart Comparison ──── -->
+  <div class="chart-card glass-card" style="margin-top:24px;">
+    <h3 class="card-title">Model Metrics Comparison</h3>
+    <p class="card-sub">Accuracy · Precision · Recall · F1 · AUC side-by-side</p>
+    <div class="chart-wrap">
+      <canvas id="metricsBarChart"></canvas>
+    </div>
+  </div>
+
+  <!-- ──── Architecture ──── -->
+  <div class="arch-card glass-card">
+    <h3 class="card-title">🏗️ System Architecture</h3>
+    <div class="arch-diagram">
+
+      <div class="arch-layer">
+        <div class="arch-node input-node">Profile Input</div>
+      </div>
+      <div class="arch-arrow">▼</div>
+
+      <div class="arch-layer">
+        <div class="arch-node feature-node">Feature Engineering</div>
+      </div>
+      <div class="arch-arrow">▼</div>
+
+      <div class="arch-layer dual">
+        <div class="arch-node rule-node">Rule Engine<br/><small>12 heuristic rules</small></div>
+        <div class="arch-connector">+</div>
+        <div class="arch-node ml-node">ML Models<br/><small>LR · Random Forest</small></div>
+      </div>
+      <div class="arch-arrow">▼</div>
+
+      <div class="arch-layer">
+        <div class="arch-node hybrid-node">
+          Hybrid Scorer<br/>
+          <small>0.6 × Rule + 0.4 × RF</small>
+        </div>
+      </div>
+      <div class="arch-arrow">▼</div>
+
+      <div class="arch-layer">
+        <div class="arch-node output-node">Risk Score + Status Badge + AI Explanation</div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<script src="/static/js/research.js"></script>
+</body>
+</html>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FakeProfileDetector — AI-Powered Profile Risk Analysis</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/static/css/main.css" />
+</head>
+<body>
+
+<!-- ═══════════════════════ BACKGROUND ═══════════════════════ -->
+<div class="bg-grid"></div>
+<div class="bg-orb orb-1"></div>
+<div class="bg-orb orb-2"></div>
+<div class="bg-orb orb-3"></div>
+
+<!-- ═══════════════════════ NAV ═══════════════════════════════ -->
+<nav class="navbar">
+  <div class="nav-brand">
+    <span class="nav-logo">⬡</span>
+    <span class="nav-title">FakeProfileDetector</span>
+    <span class="nav-badge">AI v2.0</span>
+  </div>
+  <div class="nav-links">
+    <a href="/" class="nav-link active">Analyze</a>
+    <a href="/dashboard" class="nav-link">Dashboard</a>
+    <a href="/research" class="nav-link">Research</a>
+  </div>
+</nav>
+
+<!-- ═══════════════════════ HERO ══════════════════════════════ -->
+<main class="hero-section">
+  <div class="hero-badge">🤖 Hybrid AI · Rule Engine + Random Forest</div>
+  <h1 class="hero-title">
+    Detect Fake Profiles<br/>
+    <span class="gradient-text">With Precision AI</span>
+  </h1>
+  <p class="hero-subtitle">
+    Enterprise-grade fake account detection powered by a hybrid engine combining
+    rule-based heuristics and machine learning for maximum accuracy.
+  </p>
+
+  <!-- ═══════════════ ANALYZER CARD ══════════════════════════ -->
+  <div class="analyzer-card glass-card">
+    <div class="card-header">
+      <h2>Profile Analyzer</h2>
+      <p>Enter social media profile metrics for instant AI analysis</p>
+    </div>
+
+    <div class="form-grid">
+      <!-- Row 1 -->
+      <div class="form-group">
+        <label class="form-label">
+          <span class="label-icon">👤</span> Username
+        </label>
+        <input id="username" class="form-input" type="text" placeholder="e.g. john_doe" />
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">
+          <span class="label-icon">📅</span> Account Age (days)
+        </label>
+        <input id="age" class="form-input" type="number" placeholder="e.g. 365" min="0" />
+      </div>
+
+      <!-- Row 2 -->
+      <div class="form-group">
+        <label class="form-label">
+          <span class="label-icon">👥</span> Followers
+        </label>
+        <input id="followers" class="form-input" type="number" placeholder="e.g. 1200" min="0" />
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">
+          <span class="label-icon">➡️</span> Following
+        </label>
+        <input id="following" class="form-input" type="number" placeholder="e.g. 800" min="0" />
+      </div>
+
+      <!-- Row 3 -->
+      <div class="form-group">
+        <label class="form-label">
+          <span class="label-icon">📝</span> Total Posts
+        </label>
+        <input id="posts" class="form-input" type="number" placeholder="e.g. 45" min="0" />
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">
+          <span class="label-icon">❤️</span> Avg. Likes / Post
+        </label>
+        <input id="likes" class="form-input" type="number" placeholder="e.g. 120" min="0" />
+      </div>
+
+      <!-- Row 4 -->
+      <div class="form-group">
+        <label class="form-label">
+          <span class="label-icon">💬</span> Avg. Comments / Post
+        </label>
+        <input id="comments" class="form-input" type="number" placeholder="e.g. 15" min="0" />
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">
+          <span class="label-icon">📖</span> Bio
+        </label>
+        <input id="bio" class="form-input" type="text" placeholder="Profile bio text..." />
+      </div>
+
+      <!-- Row 5 full-width -->
+      <div class="form-group full-width">
+        <label class="form-label">
+          <span class="label-icon">📸</span> Recent Caption (optional)
+        </label>
+        <input id="caption" class="form-input" type="text" placeholder="Latest post caption..." />
+      </div>
+
+      <!-- Checkbox -->
+      <div class="form-group full-width">
+        <label class="checkbox-label">
+          <input type="checkbox" id="has_pic" class="checkbox-input" />
+          <span class="checkbox-custom"></span>
+          <span>Profile picture is present</span>
+        </label>
+      </div>
+    </div>
+
+    <button id="analyzeBtn" class="btn-analyze">
+      <span id="btnText">⚡ Analyze Profile</span>
+      <div id="btnSpinner" class="spinner hidden"></div>
+    </button>
+
+    <div id="errorMsg" class="error-msg hidden"></div>
+  </div>
+
+  <!-- ═══════════════ FEATURE PILLS ═════════════════════════ -->
+  <div class="feature-pills">
+    <span class="pill">🔬 Rule Engine</span>
+    <span class="pill">🤖 Random Forest</span>
+    <span class="pill">🔀 Hybrid Score</span>
+    <span class="pill">🧠 AI Explanation</span>
+    <span class="pill">📊 Feature Analysis</span>
+  </div>
+</main>
+
+<script src="/static/js/analyzer.js"></script>
+</body>
+</html>
