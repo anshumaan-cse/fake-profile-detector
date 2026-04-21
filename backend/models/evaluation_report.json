@@ -1,0 +1,90 @@
+{
+  "logistic_regression": {
+    "model": "Logistic Regression",
+    "accuracy": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1_score": 1.0,
+    "roc_auc": 1.0,
+    "confusion_matrix": [
+      [
+        180,
+        0
+      ],
+      [
+        0,
+        240
+      ]
+    ],
+    "roc_curve": {
+      "fpr": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "tpr": [
+        0.0,
+        0.0042,
+        1.0,
+        1.0
+      ]
+    }
+  },
+  "random_forest": {
+    "model": "Random Forest",
+    "accuracy": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1_score": 1.0,
+    "roc_auc": 1.0,
+    "confusion_matrix": [
+      [
+        180,
+        0
+      ],
+      [
+        0,
+        240
+      ]
+    ],
+    "roc_curve": {
+      "fpr": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0111,
+        0.0333,
+        0.05,
+        0.0556,
+        1.0
+      ],
+      "tpr": [
+        0.0,
+        0.9458,
+        0.9708,
+        0.9792,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ]
+    }
+  },
+  "feature_importances": {
+    "followers_count": 0.13957938894177946,
+    "following_count": 0.0007168092994679191,
+    "engagement_rate": 0.02986930882097706,
+    "account_age_days": 0.13455676309606412,
+    "posts_per_week": 0.009284358798209639,
+    "bio_length": 0.0393261605158263,
+    "profile_picture": 0.000843041962300287,
+    "username_randomness": 0.2050022163729536,
+    "spam_keyword_score": 0.3621659586324616,
+    "ff_ratio": 0.07865599355996011
+  }
+}

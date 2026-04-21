@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Analysis Dashboard — FakeProfileDetector</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/static/css/main.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body class="dashboard-page">
+
+<div class="bg-grid"></div>
+<div class="bg-orb orb-1"></div>
+<div class="bg-orb orb-2"></div>
+
+<!-- ═══════════════════════ NAV ═══════════════════════════════ -->
+<nav class="navbar">
+  <div class="nav-brand">
+    <span class="nav-logo">⬡</span>
+    <span class="nav-title">FakeProfileDetector</span>
+    <span class="nav-badge">AI v2.0</span>
+  </div>
+  <div class="nav-links">
+    <a href="/" class="nav-link">Analyze</a>
+    <a href="/dashboard" class="nav-link active">Dashboard</a>
+    <a href="/research" class="nav-link">Research</a>
+  </div>
+</nav>
+
+<!-- ═══════════════════════ MAIN ══════════════════════════════ -->
+<div class="dash-container" id="dashContainer">
+
+  <!-- ──── TOP HERO ROW ──── -->
+  <div class="dash-hero">
+    <div class="dash-hero-left">
+      <div class="risk-circle-wrap">
+        <canvas id="riskGauge" width="200" height="200"></canvas>
+        <div class="risk-overlay">
+          <div id="riskScoreDisplay" class="risk-score-big">--</div>
+          <div class="risk-label">Hybrid Risk Score</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="dash-hero-center">
+      <div id="statusBadge" class="status-badge status-loading">LOADING…</div>
+      <h1 id="profileUsername" class="profile-username">@—</h1>
+      <p id="explanationText" class="explanation-text">Running analysis…</p>
+    </div>
+
+    <div class="dash-hero-right">
+      <div class="score-breakdown">
+        <div class="score-item">
+          <span class="score-label">Rule Engine</span>
+          <div class="score-bar-wrap">
+            <div id="ruleBar" class="score-bar rule-bar" style="width:0%"></div>
+          </div>
+          <span id="ruleScore" class="score-value">—</span>
+        </div>
+        <div class="score-item">
+          <span class="score-label">ML (Random Forest)</span>
+          <div class="score-bar-wrap">
+            <div id="rfBar" class="score-bar rf-bar" style="width:0%"></div>
+          </div>
+          <span id="rfScore" class="score-value">—</span>
+        </div>
+        <div class="score-item">
+          <span class="score-label">ML (Logistic Reg.)</span>
+          <div class="score-bar-wrap">
+            <div id="lrBar" class="score-bar lr-bar" style="width:0%"></div>
+          </div>
+          <span id="lrScore" class="score-value">—</span>
+        </div>
+        <div class="score-item score-item-hybrid">
+          <span class="score-label">⚡ Hybrid Score</span>
+          <div class="score-bar-wrap">
+            <div id="hybridBar" class="score-bar hybrid-bar" style="width:0%"></div>
+          </div>
+          <span id="hybridScore" class="score-value">—</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ──── METRIC CARDS ──── -->
+  <div class="metric-grid">
+    <div class="metric-card glass-card">
+      <div class="metric-icon">👥</div>
+      <div class="metric-info">
+        <div id="mc-followers" class="metric-value">—</div>
+        <div class="metric-label">Followers</div>
+      </div>
+    </div>
+    <div class="metric-card glass-card">
+      <div class="metric-icon">➡️</div>
+      <div class="metric-info">
+        <div id="mc-following" class="metric-value">—</div>
+        <div class="metric-label">Following</div>
+      </div>
+    </div>
+    <div class="metric-card glass-card">
+      <div class="metric-icon">📊</div>
+      <div class="metric-info">
+        <div id="mc-engagement" class="metric-value">—</div>
+        <div class="metric-label">Engagement Rate</div>
+      </div>
+    </div>
+    <div class="metric-card glass-card">
+      <div class="metric-icon">📅</div>
+      <div class="metric-info">
+        <div id="mc-age" class="metric-value">—</div>
+        <div class="metric-label">Account Age (days)</div>
+      </div>
+    </div>
+    <div class="metric-card glass-card">
+      <div class="metric-icon">📝</div>
+      <div class="metric-info">
+        <div id="mc-posts" class="metric-value">—</div>
+        <div class="metric-label">Posts / Week</div>
+      </div>
+    </div>
+    <div class="metric-card glass-card">
+      <div class="metric-icon">🎯</div>
+      <div class="metric-info">
+        <div id="mc-riskScore" class="metric-value">—</div>
+        <div class="metric-label">Hybrid Risk Score</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ──── CHARTS ROW ──── -->
+  <div class="charts-grid">
+
+    <!-- Feature Contribution -->
+    <div class="chart-card glass-card">
+      <h3 class="card-title">Feature Contribution to Risk</h3>
+      <p class="card-sub">Rule-engine flag weights by severity</p>
+      <div class="chart-wrap">
+        <canvas id="featureChart"></canvas>
+      </div>
+    </div>
+
+    <!-- Rule vs ML comparison -->
+    <div class="chart-card glass-card">
+      <h3 class="card-title">Model Comparison</h3>
+      <p class="card-sub">Rule-Based vs ML vs Hybrid risk scores</p>
+      <div class="chart-wrap">
+        <canvas id="comparisonChart"></canvas>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ──── BOTTOM ROW ──── -->
+  <div class="bottom-grid">
+
+    <!-- Why Flagged Panel -->
+    <div class="flagged-card glass-card">
+      <h3 class="card-title">⚠️ Why Flagged?</h3>
+      <p class="card-sub">Triggered rules with weights</p>
+      <div id="flagsList" class="flags-list">
+        <p class="placeholder-text">Loading analysis…</p>
+      </div>
+    </div>
+
+    <!-- Behavioral Anomalies -->
+    <div class="anomaly-card glass-card">
+      <h3 class="card-title">🧠 Behavioral Anomalies</h3>
+      <p class="card-sub">AI-detected pattern deviations</p>
+      <div id="anomalyList" class="anomaly-list">
+        <p class="placeholder-text">Loading…</p>
+      </div>
+    </div>
+
+    <!-- Feature Values -->
+    <div class="features-card glass-card">
+      <h3 class="card-title">📋 Feature Breakdown</h3>
+      <p class="card-sub">Computed feature vector</p>
+      <div id="featureTable" class="feature-table"></div>
+    </div>
+
+  </div>
+
+  <!-- ──── BACK BUTTON ──── -->
+  <div class="back-row">
+    <a href="/" class="btn-back">← Analyze Another Profile</a>
+  </div>
+
+</div>
+
+<script src="/static/js/dashboard.js"></script>
+</body>
+</html>
